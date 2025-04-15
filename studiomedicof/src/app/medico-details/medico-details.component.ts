@@ -33,6 +33,8 @@ import { MenuItem, MessageService } from 'primeng/api';
     DropdownModule, 
     SpeedDialModule, 
     ToastModule
+    
+    
   ],
   providers: [MessageService],
   templateUrl: './medico-details.component.html',

@@ -1,0 +1,24 @@
+/* Modifica il colore del cerchio del radio button */
+.p-radiobutton .p-radiobutton-box {
+    border-color: #007bff; /* Colore bordo */
+    background-color: #f0f0f0; /* Colore di sfondo */
+}
+
+/* Cambia il colore di attivazione del radio button quando selezionato */
+.p-radiobutton.p-radiobutton-checked .p-radiobutton-box {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+/* Modifica il colore del checkmark (cerchio interno) */
+.p-radiobutton.p-radiobutton-checked .p-radiobutton-icon {
+    background-color: white;
+    border-color: white;
+}
+
+/* Modifica l'aspetto del label associato */
+.p-radiobutton label {
+    font-size: 1.2rem;
+    color: #333;
+    margin-left: 8px;
+}

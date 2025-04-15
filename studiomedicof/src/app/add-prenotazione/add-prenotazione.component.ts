@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ApiService } from '../services/api.service';
-import { DropdownFilterOptions, DropdownModule } from 'primeng/dropdown';
+import { DropdownModule } from 'primeng/dropdown';
 import { CalendarModule } from 'primeng/calendar';
 import { ButtonModule } from 'primeng/button';
 import { CommonModule } from '@angular/common';
@@ -12,6 +12,8 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { DatePickerModule } from 'primeng/datepicker';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { TextareaModule } from 'primeng/textarea';
+import { Router } from '@angular/router';
+import { CardModule } from 'primeng/card';
 
 @Component({
   selector: 'app-add-prenotazione',
@@ -29,6 +31,8 @@ import { TextareaModule } from 'primeng/textarea';
     DatePickerModule,
     RadioButtonModule,
     TextareaModule,
+    CardModule,
+    
   ],
 })
 export class AddPrenotazioneComponent implements OnInit {
@@ -63,6 +67,7 @@ export class AddPrenotazioneComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private service: ApiService,
+    private router: Router,
   ) {
     this.prenotazioneForm = this.fb.group({
       idPaziente: [],
@@ -103,6 +108,11 @@ export class AddPrenotazioneComponent implements OnInit {
         console.error('Errore durante il salvataggio:', err);
       }
     });
+    this.prenotazioneForm.reset();
+  }
+
+  resetForm(){
+    this.prenotazioneForm.reset();
   }
 
   searchPaziente(event: AutoCompleteCompleteEvent) {
@@ -138,5 +148,9 @@ export class AddPrenotazioneComponent implements OnInit {
     this.filteredTipi = this.tipoVisita.filter(tipo =>
       tipo.label.toLowerCase().includes(query)
     );
+  }
+
+  goto(url : string){
+    this.router.navigateByUrl(url)
   }
 }

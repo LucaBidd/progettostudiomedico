@@ -1,20 +1,16 @@
 .paziente-details {
-    display: flex;
     flex-direction: column;
-    gap: 20px;
+    padding: 0.5rem;
   }
-  
+
+  .paziente-info {
+    flex-direction: column;
+    margin-top: 0rem;
+  }
+
   .paziente-header {
     display: flex;
-    align-items: center;
-    gap: 15px;
-  }
-  
-  .paziente-photo {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    object-fit: cover;
+    margin-bottom: 0rem;
   }
   
   .paziente-name h2 {

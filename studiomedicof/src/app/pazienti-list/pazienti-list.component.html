@@ -1,4 +1,10 @@
-<h2>Elenco pazienti</h2>
+<div>
+  <p style="color: #708090"><p-button icon="pi pi-home" [link]="true" (onClick)="goto('')" [style]="{ color: 'gray' }"
+          class="p-button-link" /> <i class="pi pi-angle-right"></i> Elenco Pazienti
+  </p>
+</div>
+
+<h1 class="text-3xl text-center font-bold">Elenco pazienti</h1>
 <p-table 
   [value]="pazienti" 
   [tableStyle]="{ 'min-width': '50rem' }"

@@ -13,6 +13,9 @@ import { GoBackService } from '../services/go-back.service';
 import { DialogModule } from 'primeng/dialog';
 import { DatePickerModule } from 'primeng/datepicker';
 import { DropdownModule } from 'primeng/dropdown';
+import { SpeedDialModule } from 'primeng/speeddial';
+import { ToastModule } from 'primeng/toast';
+import { MenuItem, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-medico-details',
@@ -27,8 +30,11 @@ import { DropdownModule } from 'primeng/dropdown';
     DialogModule,
     DatePickerModule,
     ReactiveFormsModule,
-    DropdownModule,
+    DropdownModule, 
+    SpeedDialModule, 
+    ToastModule
   ],
+  providers: [MessageService],
   templateUrl: './medico-details.component.html',
   styleUrl: './medico-details.component.scss'
 })
@@ -47,9 +53,11 @@ export class MedicoDetailsComponent implements OnInit {
     { label: 'Giovedì', value: 'THURSDAY' },
     { label: 'Venerdì', value: 'FRIDAY' },
   ];
+    items: MenuItem[] = [];
+  
 
 
-  constructor(private route: ActivatedRoute, private service: ApiService, private serviceBack: GoBackService, private fb: FormBuilder) {
+  constructor(private route: ActivatedRoute, private service: ApiService, private serviceBack: GoBackService, private fb: FormBuilder, private messageService: MessageService,) {
     this.turnoForm = this.fb.group({
       idMedico: [],
       giorno: [''],
@@ -88,6 +96,22 @@ export class MedicoDetailsComponent implements OnInit {
         } catch (error) { }
       } catch (error) { }
     }
+    this.items = [
+      {
+          label: 'Edit',
+          icon: 'pi pi-pencil',
+          command: () => {
+              this.messageService.add({ severity: 'info', summary: 'Add', detail: 'Data Added' });
+          },
+      },
+      {
+          label: 'Delete',
+          icon: 'pi pi-trash',
+          command: () => {
+              this.messageService.add({ severity: 'error', summary: 'Delete', detail: 'Data Deleted' });
+          },
+      },
+  ];
   }
 
   mostraForm() {

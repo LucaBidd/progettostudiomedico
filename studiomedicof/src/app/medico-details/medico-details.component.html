@@ -15,8 +15,10 @@
         <p><strong>Telefono:</strong> {{ medico.telefono }}</p>
         <p><strong>Email:</strong> {{ medico.email }}</p>
       </div>
-      <div style="display: flex; justify-content: flex-end;">
-        <p-button icon="pi pi-times" severity="danger" (onClick)="deleteMedico(medico.id)" />
+      <div class="flex justify-content-end" [style]="{ position: 'relative', height: '' }">
+        <p-toast />
+        <p-speeddial [model]="items" direction="up" [style]="{ position: 'absolute', right: 0, bottom: 0 }"
+          [buttonProps]="{ severity: 'info', rounded: true }" [tooltipOptions]="{ tooltipPosition: 'left' }" />
       </div>
     </ng-template>
   </p-card>

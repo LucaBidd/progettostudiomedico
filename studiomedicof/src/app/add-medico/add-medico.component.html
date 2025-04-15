@@ -1,0 +1,38 @@
+<div class="card p-fluid">
+    <h2>Aggiungi Nuovo Medico</h2>
+    
+    <form formGroup="medicoForm" (ngSubmit)="onSubmit()">
+      <div class="grid">
+        <!-- Nome -->
+        <div class="col-12 md:col-6">
+          <label for="nome">Nome</label>
+          <input pInputText id="nome" formControlName="nome" placeholder="Inserisci nome" />
+        </div>
+  
+        <!-- Telefono -->
+        <div class="col-12 md:col-6">
+          <label for="telefono">Telefono</label>
+          <p-inputmask mask="(999) 999-9999" formControlName="teledono" placeholder="(999) 999-9999" />
+      </div>
+  
+        <!-- Email -->
+        <div class="col-12 md:col-6">
+          <label for="email">Email</label>
+          <input pInputText id="email" formControlName="email" placeholder="Inserisci email" />
+        </div>
+  
+        <!-- Specializzazione -->
+        <div class="col-12 md:col-6">
+          <label for="specializzazione">Specializzazione</label>
+          <p-dropdown id="specializzazione" formControlName="specializzazione"
+                     [options]="specializzazioni" placeholder="Seleziona specializzazione">
+          </p-dropdown>
+        </div>
+  
+        <!-- Pulsanti -->
+        <div class="col-12 flex justify-content-end gap-2 mt-3">
+          <p-button label="Salva" type="submit" (click)="onSubmit()"></p-button>
+        </div>
+      </div>
+    </form>
+  </div>

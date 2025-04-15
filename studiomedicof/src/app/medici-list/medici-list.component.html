@@ -1,0 +1,14 @@
+<div class="medici-container">
+    <h2>Elenco Medici</h2>
+    <div class="medici-grid">
+        <div *ngFor="let medico of medici" class="medico-card">
+            <p-card [header]="medico.nome" [subheader]="medico.specializzazione">
+                <p><strong>Email:</strong> {{ medico.email }}</p>
+                <p><strong>Telefono:</strong> {{ medico.telefono }}</p>
+                <p-button label="Dettagli" severity="secondary" class="w-full" [outlined]="true" styleClass="w-full" (click)="apriDettagli(medico.id)"/>
+            </p-card>
+        </div>
+    </div>
+</div>
+
+<p-button class="add-button" icon="pi pi-plus" [rounded]="true" severity="info" (onClick)="goto('add-medico')"/>

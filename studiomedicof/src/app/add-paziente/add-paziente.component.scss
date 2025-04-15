@@ -1,0 +1,78 @@
+:host {
+    display: block;
+    padding: 1rem;
+  }
+  
+  .card {
+    padding: 2rem;
+    border-radius: $borderRadius;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    background: $panelContentBg;
+    max-width: 900px;
+    margin: 2rem auto;
+    
+    h2 {
+      color: $textColor;
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 1.8rem;
+      font-weight: 600;
+      position: relative;
+      padding-bottom: 0.5rem;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background: $primaryColor;
+      }
+    }
+  
+    .p-inputtext {
+      width: 100%;
+      transition: all $transitionDuration;
+      
+      &:enabled:hover {
+        border-color: $primaryColor;
+      }
+      
+      &:enabled:focus {
+        box-shadow: 0 0 0 2px rgba($primaryColor, 0.2);
+        border-color: $primaryColor;
+      }
+    }
+  
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: $textSecondaryColor;
+      font-weight: 500;
+    }
+  
+    .p-button {
+      min-width: 120px;
+      
+      &:not(.p-button-secondary) {
+        background: $primaryColor;
+        border-color: $primaryColor;
+        
+        &:hover {
+          background: $primaryDarkColor;
+          border-color: $primaryDarkColor;
+        }
+      }
+    }
+  
+    @media screen and (max-width: $mobileBreakpoint) {
+      padding: 1.5rem;
+      margin: 1rem;
+      
+      h2 {
+        font-size: 1.5rem;
+      }
+    }
+  }

@@ -1,0 +1,34 @@
+<h2>Elenco pazienti</h2>
+<p-table 
+  [value]="pazienti" 
+  [tableStyle]="{ 'min-width': '50rem' }"
+  [paginator]="true"
+  [rows]="5"
+  [rowsPerPageOptions]="[5, 10, 20]">
+
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Nome</th>
+      <th>Cognome</th>
+      <th>Codice Fiscale</th>
+      <th>Telefono</th>
+      <th>Email</th>
+      <th>Indirizzo</th>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="body" let-paziente>
+    <tr class="clickable-row" (click)="apriDettagli(paziente.id)">
+      <td>{{ paziente.nome }}</td>
+      <td>{{ paziente.cognome }}</td>
+      <td>{{ paziente.codFiscale }}</td>
+      <td>{{ paziente.telefono }}</td>
+      <td>{{ paziente.email }}</td>
+      <td>{{ paziente.indirizzo }}</td>
+    </tr>
+  </ng-template>
+
+</p-table>
+
+
+<p-button class="add-button" icon="pi pi-plus" [rounded]="true" severity="info" (onClick)="goto('add-paziente')"/>

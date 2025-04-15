@@ -1,0 +1,33 @@
+<main class="flex flex-wrap">
+  <div class="welcome">
+    <h1>MediBooking</h1>
+  </div>
+
+  <div class="actions">
+
+    <div class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round">
+      <button pButton (click)="goto('add-prenotazione')">
+        <i class="pi pi-plus"></i>
+        Nuova prenotazione
+      </button>
+    </div>
+
+    <div class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round">
+      <button pButton (click)="goto('pazienti-list')"
+        class="flex-1 h-4rem bg-primary font-bold text-center p-4 border-round">
+        <i class="pi pi-list"></i>
+        Elenco pazienti
+      </button>
+    </div>
+
+    <div class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round">
+      <button pButton (click)="goto('medici-list')"
+        class="flex-1 h-4rem bg-primary font-bold text-center p-4 border-round">
+        <i class="pi pi-user-edit"></i>
+        Gestione Medici
+      </button>
+    </div>
+    
+  </div>
+
+</main>

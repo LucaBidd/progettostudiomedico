@@ -1,0 +1,48 @@
+<div class="paziente-details">
+    
+    <!-- Card con le informazioni del paziente -->
+    <p-card>
+      <ng-template pTemplate="header">
+        <div class="paziente-header">
+          <div class="paziente-name">
+            <h2>{{ paziente.nome }} {{ paziente.cognome }}</h2>
+            <p>{{ paziente.codFiscale }}</p>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="content">
+        <div class="paziente-info">
+          <p><strong>Telefono:</strong> {{ paziente.telefono }}</p>
+          <p><strong>Email:</strong> {{ paziente.email }}</p>
+          <p><strong>Indirizzo:</strong> {{ paziente.indirizzo }}</p>
+          <!-- Aggiungi altre informazioni se necessario -->
+        </div>
+        <div style="display: flex; justify-content: flex-end;">
+          <p-button icon="pi pi-times" severity="danger" (onClick)="deletePaziente(paziente.id)"/>
+        </div>
+      </ng-template>
+    </p-card>
+  
+    <!-- Tabella con le prenotazioni del paziente -->
+    <p-table [value]="prenotazioni" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5, 10, 20]">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Data</th>
+          <th>Ora</th>
+          <th>Medico</th>
+          <th>Stato</th>
+          <!-- Aggiungi altre colonne se necessario -->
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-prenotazione>
+        <tr>
+          <td>{{ prenotazione.data | date:'dd/MM/yyyy' }}</td>
+          <td>{{ prenotazione.orario }}</td>
+          <td>{{ prenotazione.nomeMedico }}</td>
+          <td>{{ prenotazione.status }}</td>
+          <!-- Aggiungi altre celle se necessario -->
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+  

@@ -1,0 +1,29 @@
+.medici-container {
+    padding: 1rem;
+  }
+  
+  .medici-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+  
+  .medico-card {
+    .p-card {
+      height: 100%;
+    }
+  }
+
+  .add-button {
+    position: fixed;
+    right: 2rem;
+  
+    width: 4rem;
+    height: 4rem;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }

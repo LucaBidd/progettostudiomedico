@@ -1,0 +1,22 @@
+.add-button {
+    position: fixed;
+    right: 2rem;
+  
+    width: 4rem;
+    height: 4rem;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+  
+  ::ng-deep .clickable-row {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  ::ng-deep .clickable-row:hover {
+    background-color: #e0f3ff;
+  }
+  

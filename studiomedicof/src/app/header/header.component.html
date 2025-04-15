@@ -1,0 +1,17 @@
+<header class="app-header">
+  <div class="left">
+    <p-button icon="pi pi-sun" (onClick)="changeTheme('light')" title="Tema Chiaro" severity="info"></p-button>
+    <p-button icon="pi pi-moon" (onClick)="changeTheme('dark')" title="Tema Scuro" severity="info"></p-button>
+    <p-button icon="pi pi-desktop" (onClick)="changeTheme('system')" title="Tema di Sistema" severity="info"></p-button>
+  </div>
+
+  <div class="center">
+    <p-button icon="pi pi-refresh" (onClick)="reload()" severity="info"></p-button>
+    <p-button icon="pi pi-cog" (onClick)="openSettings()" severity="info"></p-button>
+  </div>
+
+  <div class="right">
+    <span>{{ userName }}</span>
+    <p-button label="Logout" icon="pi pi-sign-out" (onClick)="logout()" styleClass="p-button-text" severity="secondary"></p-button>
+  </div>
+</header>

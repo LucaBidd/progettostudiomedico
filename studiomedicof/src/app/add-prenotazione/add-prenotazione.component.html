@@ -1,0 +1,96 @@
+<div>
+    <h1>Aggiungi nuova prenotazione</h1>
+    <form [formGroup]="prenotazioneForm">
+        <!-- idPaziente -->
+        <div class="col-12 md:col-6">
+            <label for="idPaziente">Paziente</label>
+            <div class="card flex justify-center">
+                <p-autocomplete formControlName="idPaziente" [dropdown]="true" [suggestions]="filteredPazienti" optionLabel="codFiscale" optionValue="id"
+                    (completeMethod)="searchPaziente($event)">
+                    <ng-template let-paziente #item>
+                        <div class="flex items-center gap-2">
+                            <div>{{ paziente.nome }} {{ paziente.cognome }}</div>
+                        </div>
+                    </ng-template>
+                </p-autocomplete>
+            </div>
+        </div>
+
+        <!-- idMedico -->
+        <div class="col-12 md:col-6">
+            <label for="idMedico">Medico</label>
+            <div class="card flex justify-center">
+                <p-autocomplete formControlName="idMedico" [dropdown]="true" [suggestions]="filteredMedici" optionLabel="nome" optionValue="id"
+                    (completeMethod)="searchMedico($event)">
+                    <ng-template let-medico #item>
+                        <div class="flex items-center gap-2">
+                            <div>{{ medico.nome }}</div>
+                        </div>
+                    </ng-template>
+                </p-autocomplete>
+            </div>
+        </div>
+
+        <!-- tipoVisita -->
+        <div class="col-12 md:col-6">
+            <label for="tipoVisita">Tipo visita</label>
+            <div class="card flex justify-center">
+                <p-autocomplete formControlName="tipoVisita" [dropdown]="true" [suggestions]="filteredTipi" optionLabel="label"
+                    (completeMethod)="searchTipo($event)" />
+            </div>
+        </div>
+
+        <!-- Data -->
+        <div class="col-12 md:col-6">
+            <label for="data">Data</label>
+            <p-datepicker formControlName="data" dateFormat="dd/mm/yy" [iconDisplay]="'input'" [showIcon]="true" />
+        </div>
+
+        <!-- Orario -->
+        <div class="col-12 md:col-6">
+            <label for="orario">Orario</label>
+            <p-datepicker formControlName="orario" [iconDisplay]="'input'" [showIcon]="true" [timeOnly]="true" >
+                <ng-template #inputicon let-clickCallBack="clickCallBack">
+                    <i class="pi pi-clock" (click)="clickCallBack($event)"></i>
+                </ng-template>
+            </p-datepicker>
+        </div>
+
+        <!-- Durata -->
+        <div class="col-12 md:col-6">
+            <label for="durata">Durata</label>
+            <div class="flex flex-wrap gap-4">
+                <div class="flex items-center">
+                    <p-radiobutton name="durata" value="15" formControlName="durata" />
+                    <label for="ingredient1" class="ml-2">15 min</label>
+                </div>
+
+                <div class="flex items-center">
+                    <p-radiobutton name="durata" value="30" formControlName="durata" />
+                    <label for="ingredient2" class="ml-2">30 min</label>
+                </div>
+
+                <div class="flex items-center">
+                    <p-radiobutton name="durata" value="45" formControlName="durata" />
+                    <label for="ingredient3" class="ml-2">45 min</label>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Costo -->
+        <div class="col-12 md:col-6">
+            <label for="costo">Costo</label>
+            <p-inputnumber formControlName="costo" mode="currency" inputId="currency-italy" currency="EUR"
+                locale="it-IT" />
+        </div>
+
+        <!-- Note -->
+        <div class="col-12 md:col-6">
+            <label for="telefono">Note</label>
+            <textarea rows="5" cols="30" pTextarea formControlName="note"></textarea>
+        </div>
+
+        <p-button label="Salva" severity="info" (click)="onSubmit()"/>
+    </form>
+</div>

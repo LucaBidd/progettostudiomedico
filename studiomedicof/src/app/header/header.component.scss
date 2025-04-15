@@ -1,0 +1,67 @@
+.app-header {
+  background: linear-gradient(135deg, rgba(0, 162, 255, 0.85), rgba(0, 120, 200, 0.85));
+  color: var(--text-color, #fff);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.app-header .left,
+.app-header .center,
+.app-header .right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Pulsanti: utilizza una transizione per l'hover e aumenta il padding */
+.app-header button {
+  min-width: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.app-header button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+  border-radius: 0.5rem;
+}
+
+/* Bottoni primari con pButton, se vuoi dare un tocco più accentuato */
+.app-header button.p-button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+}
+
+/* Nome utente: evidenziamo meglio il testo */
+.app-header .right span {
+  margin-right: 0.75rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+/* Adattabilità: se il contenuto è troppo stretto, gli elementi si accodano in colonne */
+@media (max-width: 600px) {
+  .app-header {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+  }
+  .app-header .left,
+  .app-header .center,
+  .app-header .right {
+    justify-content: center;
+  }
+}

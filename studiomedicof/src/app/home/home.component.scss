@@ -30,3 +30,27 @@
     flex-wrap: wrap;
   }
   
+
+  .table-settimanale {
+    width: 100%;
+    border-collapse: collapse;
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: center;
+      min-width: 120px;
+      height: 80px;
+      vertical-align: top;
+    }
+    .prenotazione-box {
+      background: #f4f6ff;
+      border-left: 4px solid #007ad9;
+      padding: 6px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      &.status-in_sospeso { background: #fff8e1; border-color: #fbc02d; }
+      &.status-confermata { background: #e0f7fa; border-color: #00796b; }
+      &.status-annullata { background: #ffebee; border-color: #c62828; }
+    }
+  }
+  

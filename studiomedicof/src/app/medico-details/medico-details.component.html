@@ -1,11 +1,22 @@
+<div>
+  <p style="color: #708090">
+    <p-button icon="pi pi-home" [link]="true" (onClick)="goto('')" [style]="{ color: 'gray' }" class="p-button-link" />
+    <i class="pi pi-angle-right"></i>
+    <p-button label="Elenco Pazienti" [link]="true" (onClick)="goto('pazienti-list')" [style]="{color: 'gray'}"
+      class="p-button-link" />
+    <i class="pi pi-angle-right"></i>
+    {{ medico.nome }}
+  </p>
+</div>
+
 <div class="medico-details">
 
   <!-- Card con le informazioni del medico -->
   <p-card>
     <ng-template pTemplate="header">
-      <div class="medico-header">
+      <div class="medico-header p-3">
         <div class="medico-name">
-          <h2>{{ medico.nome }} {{ medico.cognome }}</h2>
+          <h2>{{ medico.nome }}</h2>
           <p>{{ medico.specializzazione }}</p>
         </div>
       </div>
@@ -24,7 +35,7 @@
   </p-card>
 
   <!-- Sezione Turni -->
-  <div class="turni-container">
+  <div class="turni-container" >
     <h2 class="titolo-turni">Disponibilità e Turni</h2>
 
     <div class="turni-grid">
@@ -51,34 +62,44 @@
       </div>
       <div style="display: flex; justify-content: flex-end;">
         <p-button (click)="mostraForm()" label="Aggiungi Turno" severity="info" />
+
         <p-dialog header="Aggiungi Turno" [modal]="true" [(visible)]="visible"
-          [style]="{ width: '50rem', height: '50rem' }">
-          <form [formGroup]="turnoForm">
-            <div class="flex items-center gap-4 mb-4">
-              <label for="giorno" class="font-semibold w-24">Giorno</label>
-              <div class="card flex justify-center">
-                <p-dropdown formControlName="giorno" [options]="giorni" optionLabel="label" optionValue="value" placeholder="Scegli un giorno" />
+          [style]="{ width: '25rem', height: '27.5rem' }">
+
+          <form [formGroup]="turnoForm" class="col-12">
+            <div class="grid">
+              <div class="flex items-center gap-4 mb-4 col-12 grid">
+                <label for="giorno" class="font-semibold w-24">Giorno</label>
+                <div class="card flex justify-center">
+                  <p-dropdown formControlName="giorno" [options]="giorni" optionLabel="label" optionValue="value" placeholder="Scegli un giorno" />
+                </div>
               </div>
+              <div class="flex items-center gap-4 mb-4 col-12">
+                <label for="orarioInizio" class="font-semibold w-24">Inizio</label>
+                <p-datepicker formControlName="orarioInizio" [iconDisplay]="'input'" [showIcon]="true" [timeOnly]="true">
+                  <ng-template #inputicon let-clickCallBack="clickCallBack">
+                    <i class="pi pi-clock" (click)="clickCallBack($event)"></i>
+                  </ng-template>
+                </p-datepicker>
+              </div>
+              <div class="flex items-center gap-4 mb-8 col-12">
+                <label for="orarioFine" class="font-semibold w-24">Fine</label>
+                <p-datepicker formControlName="orarioFine" [iconDisplay]="'input'" [showIcon]="true" [timeOnly]="true">
+                  <ng-template #inputicon let-clickCallBack="clickCallBack">
+                    <i class="pi pi-clock" (click)="clickCallBack($event)"></i>
+                  </ng-template>
+                </p-datepicker>
+              </div>
+              <div class="flex justify-content-between w-full">
+                <!-- Bottone Cancella -->
+                <div class="flex justify-content-start">
+                    <p-button label="Cancel" severity="secondary" (click)="visible = false" />
+                </div>
+                <!-- Bottone Salva -->
+                <div class="flex justify-content-end">
+                    <p-button label="Salva" severity="info" (click)="visible = false" (click)="aggiungiTurno()" />
+                </div>
             </div>
-            <div class="flex items-center gap-4 mb-4">
-              <label for="orarioInizio" class="font-semibold w-24">Inizio</label>
-              <p-datepicker formControlName="orarioInizio" [iconDisplay]="'input'" [showIcon]="true" [timeOnly]="true">
-                <ng-template #inputicon let-clickCallBack="clickCallBack">
-                  <i class="pi pi-clock" (click)="clickCallBack($event)"></i>
-                </ng-template>
-              </p-datepicker>
-            </div>
-            <div class="flex items-center gap-4 mb-8">
-              <label for="orarioFine" class="font-semibold w-24">Fine</label>
-              <p-datepicker formControlName="orarioFine" [iconDisplay]="'input'" [showIcon]="true" [timeOnly]="true">
-                <ng-template #inputicon let-clickCallBack="clickCallBack">
-                  <i class="pi pi-clock" (click)="clickCallBack($event)"></i>
-                </ng-template>
-              </p-datepicker>
-            </div>
-            <div class="flex justify-end gap-2">
-              <p-button label="Cancel" severity="secondary" (click)="visible = false" />
-              <p-button label="Save" (click)="visible = false" (click)="aggiungiTurno()" />
             </div>
           </form>
         </p-dialog>

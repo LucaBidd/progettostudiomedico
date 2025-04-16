@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { firstValueFrom } from 'rxjs';
 import { CardModule } from 'primeng/card';
@@ -32,9 +32,7 @@ import { MenuItem, MessageService } from 'primeng/api';
     ReactiveFormsModule,
     DropdownModule, 
     SpeedDialModule, 
-    ToastModule
-    
-    
+    ToastModule,
   ],
   providers: [MessageService],
   templateUrl: './medico-details.component.html',
@@ -59,7 +57,7 @@ export class MedicoDetailsComponent implements OnInit {
   
 
 
-  constructor(private route: ActivatedRoute, private service: ApiService, private serviceBack: GoBackService, private fb: FormBuilder, private messageService: MessageService,) {
+  constructor(private route: ActivatedRoute, private router: Router, private service: ApiService, private serviceBack: GoBackService, private fb: FormBuilder, private messageService: MessageService,) {
     this.turnoForm = this.fb.group({
       idMedico: [],
       giorno: [''],
@@ -150,5 +148,9 @@ export class MedicoDetailsComponent implements OnInit {
       await firstValueFrom(this.service.deleteMedico(id));
     } catch (error) { }
     this.serviceBack.goBack();
+  }
+
+  goto(url : string){
+    this.router.navigateByUrl(url);
   }
 }

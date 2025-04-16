@@ -14,5 +14,23 @@
     <p-button label="Gestione Medici" icon="pi pi-user-edit" severity="secondary" (onClick)="goto('medici-list')">
     </p-button>
   </div>
+  
+  <!-- Tabella con le prenotazioni della settimana -->
+  <p-table [value]="giorni" showGridlines [tableStyle]="{ 'min-width': '80rem' }">
+    <ng-template #header>
+      <tr>
+        <th *ngFor="let giorno of giorni">
+          {{ giorno }}
+      </th>
+      </tr>
+    </ng-template>
+    <ng-template #body>
+      <tr *ngFor="let ora of orari">
+        <td>
+          {{ ora }}
+        </td>
+    </tr>
+    </ng-template>
+  </p-table>
 
 </main>

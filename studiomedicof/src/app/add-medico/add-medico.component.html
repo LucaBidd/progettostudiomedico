@@ -1,38 +1,69 @@
+<div>
+  <p style="color: #708090">
+    <p-button icon="pi pi-home" [link]="true" (onClick)="goto('')" [style]="{ color: 'gray' }" class="p-button-link" />
+    <i class="pi pi-angle-right"></i>
+    <p-button label="Gestione medici" [link]="true" (onClick)="goto('medici-list')" [style]="{color: 'gray'}"
+      class="p-button-link" />
+    <i class="pi pi-angle-right"></i>
+    Aggiungi medico
+  </p>
+</div>
+
 <div class="card p-fluid">
-    <h2>Aggiungi Nuovo Medico</h2>
-    
-    <form formGroup="medicoForm" (ngSubmit)="onSubmit()">
-      <div class="grid">
-        <!-- Nome -->
-        <div class="col-12 md:col-6">
-          <label for="nome">Nome</label>
-          <input pInputText id="nome" formControlName="nome" placeholder="Inserisci nome" />
+  <h1 class="text-3xl text-center font-bold">Aggiungi nuovo medico</h1>
+  <div class="p-3 flex items-center justify-content-center">
+
+    <p-card>
+      <form [formGroup]="medicoForm" class="col-12">
+
+        <div class="grid p-2">
+          <!-- Nome -->
+          <div class="col-6">
+            <label for="nome" class="font-bold">Nome</label>
+            <div class="flex justify-center">
+              <input type="text" pInputText id="nome" formControlName="nome" placeholder="Inserisci nome" />
+            </div>
+          </div>
+
+          <!-- Telefono -->
+          <div class="col-6">
+            <label for="telefono" class="font-bold">Telefono</label>
+            <div class="flex justify-center">
+              <p-inputmask mask="(999) 999-9999" formControlName="teledono" placeholder="(999) 999-9999" />
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="col-6">
+            <label for="email" class="font-bold">Email</label>
+            <div class="flex justify-center">
+              <input pInputText id="email" formControlName="email" placeholder="Inserisci email" />
+            </div>
+          </div>
+
+          <!-- Specializzazione -->
+          <div class="col-6">
+            <label for="specializzazione" class="font-bold">Specializzazione</label>
+            <div class="flex justify-center">
+              <p-dropdown id="specializzazione" formControlName="specializzazione" [options]="specializzazioni"
+                placeholder="Seleziona specializzazione">
+              </p-dropdown>
+            </div>
+          </div>
+
+          <!-- Pulsanti -->
+          <div class="flex justify-content-between w-full">
+            <!-- Bottone Reset -->
+            <div class="flex justify-content-start">
+              <p-button label="Resetta" severity="secondary" (click)="resetForm()" />
+            </div>
+            <!-- Bottone Salva -->
+            <div class="flex justify-content-end">
+              <p-button label="Salva" severity="info" (click)="onSubmit()" />
+            </div>
+          </div>
         </div>
-  
-        <!-- Telefono -->
-        <div class="col-12 md:col-6">
-          <label for="telefono">Telefono</label>
-          <p-inputmask mask="(999) 999-9999" formControlName="teledono" placeholder="(999) 999-9999" />
-      </div>
-  
-        <!-- Email -->
-        <div class="col-12 md:col-6">
-          <label for="email">Email</label>
-          <input pInputText id="email" formControlName="email" placeholder="Inserisci email" />
-        </div>
-  
-        <!-- Specializzazione -->
-        <div class="col-12 md:col-6">
-          <label for="specializzazione">Specializzazione</label>
-          <p-dropdown id="specializzazione" formControlName="specializzazione"
-                     [options]="specializzazioni" placeholder="Seleziona specializzazione">
-          </p-dropdown>
-        </div>
-  
-        <!-- Pulsanti -->
-        <div class="col-12 flex justify-content-end gap-2 mt-3">
-          <p-button label="Salva" type="submit" (click)="onSubmit()"></p-button>
-        </div>
-      </div>
-    </form>
+      </form>
+    </p-card>
   </div>
+</div>

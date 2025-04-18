@@ -1,18 +1,39 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { ApiService } from '../services/api.service';
 import { DropdownModule } from 'primeng/dropdown';
 import { ButtonModule } from 'primeng/button';
-import { InputMask } from 'primeng/inputmask';
+import { InputMask, InputMaskModule } from 'primeng/inputmask';
+import { CardModule } from 'primeng/card';
+import { Router } from '@angular/router';
+import { AutoCompleteModule } from 'primeng/autocomplete';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { CalendarModule } from 'primeng/calendar';
+import { CommonModule } from '@angular/common';
+import { DatePickerModule } from 'primeng/datepicker';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { TextareaModule } from 'primeng/textarea';
+import { InputTextModule } from 'primeng/inputtext';
 
 @Component({
   selector: 'app-add-medico',
   templateUrl: './add-medico.component.html',
   imports:[
-    DropdownModule, 
+    FormsModule,
+    DropdownModule,
+    CalendarModule,
     ButtonModule,
-    InputMask,
+    ReactiveFormsModule,
+    CommonModule,
+    AutoCompleteModule,
+    InputMaskModule,
+    InputNumberModule,
+    DatePickerModule,
+    RadioButtonModule,
+    TextareaModule,
+    CardModule,
+    InputTextModule,
   ],
   providers: [MessageService]
 })
@@ -29,7 +50,8 @@ export class AddMedicoComponent {
   constructor(
     private fb: FormBuilder,
     private apiService: ApiService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private router: Router,
   ) {
     this.medicoForm = this.fb.group({
       nome: [''],
@@ -54,7 +76,11 @@ export class AddMedicoComponent {
     });
   }
   
+  goto(url : string){
+    this.router.navigateByUrl(url);
+  }
 
   resetForm() {
+    this.medicoForm.reset();
   }
 }

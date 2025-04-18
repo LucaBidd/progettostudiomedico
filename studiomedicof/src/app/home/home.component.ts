@@ -20,8 +20,9 @@ import { CommonModule, DatePipe } from '@angular/common';
 export class HomeComponent implements OnInit{
 
   prenotazioni: any[] = [];
-  giorni: any[] = ['Ora','Lunedì', 'Martedì', 'Mercooledì', 'Giovedì', 'Venerdì'];
-  orari: any[] = ['8.00'];
+  giorni: any[] = ['Ora','Lunedì', 'Martedì', 'Mercoledì', 'Giovedì', 'Venerdì'];
+  orari: any[] = ['8.00', '9.00', '10.00', '11.00', '12.00', '13.00', '14.00', '15.00', '16.00', '17.00'];
+  slots: any[] = [' ',];
 
 
   constructor(private router : Router, private service : ApiService){}

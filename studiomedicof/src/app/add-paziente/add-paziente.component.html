@@ -1,0 +1,88 @@
+<div>
+    <p style="color: #708090">
+        <p-button icon="pi pi-home" [link]="true" (onClick)="goto('')" [style]="{ color: 'gray' }"
+            class="p-button-link" />
+        <i class="pi pi-angle-right"></i>
+        <p-button label="Elenco pazienti" [link]="true" (onClick)="goto('pazienti-list')" [style]="{color: 'gray'}"
+            class="p-button-link" />
+        <i class="pi pi-angle-right"></i>
+        Aggiungi paziente
+    </p>
+</div>
+
+<div class="card p-fluid">
+    <h1 class="text-3xl text-center font-bold">Aggiungi nuovo paziente</h1>
+    <div class="p-3 flex items-center justify-content-center">
+
+        <p-card>
+            <form [formGroup]="pazienteForm" class="col-12">
+
+                <div class="grid p-2">
+                    <!-- Nome -->
+                    <div class="col-6">
+                        <label for="nome" class="font-bold">Nome</label>
+                        <div class="flex justify-center">
+                            <input type="text" pInputText id="nome" formControlName="nome"
+                                placeholder="Inserisci nome" />
+                        </div>
+                    </div>
+                    <!-- Cognome -->
+                    <div class="col-6">
+                        <label for="cognome" class="font-bold">Cognome</label>
+                        <div class="flex justify-center">
+                            <input type="text" pInputText id="cognome" formControlName="cognome"
+                                placeholder="Inserisci Cognome" />
+                        </div>
+                    </div>
+
+                    <!-- Codice Fiscale -->
+                    <div class="col-6">
+                        <label for="codFiscale" class="font-bold">Codice Fiscale</label>
+                        <div class="flex justify-center">
+                            <input type="text" pInputText id="codFiscale" formControlName="codFiscale"
+                                placeholder="" />
+                        </div>
+                    </div>
+
+                    <!-- Telefono -->
+                    <div class="col-6">
+                        <label for="telefono" class="font-bold">Telefono</label>
+                        <div class="flex justify-center">
+                            <p-inputmask mask="(999) 999-9999" formControlName="teledono"
+                                placeholder="(999) 999-9999" />
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="col-6">
+                        <label for="email" class="font-bold">Email</label>
+                        <div class="flex justify-center">
+                            <input pInputText id="email" formControlName="email" placeholder="Inserisci email" />
+                        </div>
+                    </div>
+
+                    <!-- Indirizzo -->
+                    <div class="col-6">
+                        <label for="indirizzo" class="font-bold">Indirizzo</label>
+                        <div class="flex justify-center">
+                            <input type="text" pInputText id="indirizzo" formControlName="indirizzo"
+                                placeholder="Via abc, 00" />
+                        </div>
+                    </div>
+
+                    <!-- Pulsanti -->
+                    <div class="flex justify-content-between w-full">
+                        <!-- Bottone Reset -->
+                        <div class="flex justify-content-start">
+                            <p-button label="Resetta" severity="secondary" (click)="resetForm()" />
+                        </div>
+                        <!-- Bottone Salva -->
+                        <div class="flex justify-content-end">
+                            <p-button label="Salva" severity="info" (click)="onSubmit()" />
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </p-card>
+    </div>
+</div>

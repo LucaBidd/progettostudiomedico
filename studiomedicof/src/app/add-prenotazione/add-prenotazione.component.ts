@@ -32,7 +32,6 @@ import { CardModule } from 'primeng/card';
     RadioButtonModule,
     TextareaModule,
     CardModule,
-    
   ],
 })
 export class AddPrenotazioneComponent implements OnInit {

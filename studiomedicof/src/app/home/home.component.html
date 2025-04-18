@@ -16,9 +16,9 @@
   </div>
   
   <!-- Tabella con le prenotazioni della settimana -->
-  <p-table [value]="giorni" showGridlines [tableStyle]="{ 'min-width': '80rem' }">
+  <p-table [value]="slots" showGridlines [tableStyle]="{ 'min-width': '80rem' }">
     <ng-template #header>
-      <tr>
+      <tr>  
         <th *ngFor="let giorno of giorni">
           {{ giorno }}
       </th>
